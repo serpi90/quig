@@ -7,6 +7,7 @@ require_once('loadPhrases.php');
 $pngBuilder = new PhrasePNGBuilder( $textFont, $authorFont, $textSize, $authorSize );
 $counter = 0;
 
+// Generate images for all phrases that have not been generated before
 foreach( getPhrases( ) AS $phrase ) {
 	$text = wordwrap( $phrase->phrase( ), $charactersPerLine );
 	$author = $phrase->author( );
@@ -14,16 +15,17 @@ foreach( getPhrases( ) AS $phrase ) {
 	$hash = $phrase->md5( );
 	$imageFile = $imagesFolder.'/'.$hash.'.png';
 
-	$pngBuilder->phrase( $phrase, $charactersPerLine );
-	$image = $pngBuilder->build();
-	// Save the image
-	imagepng( $image, $imageFile );
-	// Unload resources.
-	imagedestroy( $image );
-
-	$counter++;
+	if( !file_exists($imageFile) ) {
+		$pngBuilder->phrase( $phrase, $charactersPerLine );
+		$image = $pngBuilder->build();
+		// Save the image
+		imagepng( $image, $imageFile );
+		// Unload resources.
+		imagedestroy( $image );
+		$counter++;
+	}
 }
 
-echo "Generated {$counter} phrases as png files";
+echo "Generated {$counter} phrases as png files, current is: {$phrase}";
 ?>
 
