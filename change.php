@@ -9,7 +9,7 @@ $imageFile = $imagesFolder . '/' . $phrase->md5() . '.png';
 
 // Dont create the image if it already exists.
 if (!file_exists($imageFile)) {
-	$pngBuilder = new PhrasePNGBuilder($textFont, $authorFont, $textSize, $authorSize);
+	$pngBuilder = new PhrasePNGBuilder($textFont, $authorFont, $textSize, $authorSize, $backgroundColor, $borderColor, $textColor, $authorColor);
 	$pngBuilder->phrase($phrase, $charactersPerLine);
 	$image = $pngBuilder->build();
 	// Save the image

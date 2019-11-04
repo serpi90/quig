@@ -4,7 +4,7 @@ require_once('class.Phrase.php');
 require_once('class.PhrasePNGBuilder.php');
 require_once('loadPhrases.php');
 
-$pngBuilder = new PhrasePNGBuilder($textFont, $authorFont, $textSize, $authorSize);
+$pngBuilder = new PhrasePNGBuilder($textFont, $authorFont, $textSize, $authorSize, $backgroundColor, $borderColor, $textColor, $authorColor);
 $counter = 0;
 
 // Generate images for all phrases that have not been generated before
