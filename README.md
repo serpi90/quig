@@ -2,6 +2,12 @@
 
 Quote Image Generator: PHP scripts to generate png images from quotes.
 
+## Requirements
+
+- php-gd extension
+- Write permission on images/
+- Write permission on phrase.png
+
 ## Usage
 
 - `generateAll.php` loads al availale phrases and generates the images.
