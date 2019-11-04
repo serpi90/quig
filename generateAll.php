@@ -15,7 +15,7 @@ foreach (getPhrases() as $phrase) {
 	$hash = $phrase->md5();
 	$imageFile = $imagesFolder . '/' . $hash . '.png';
 
-	if (!file_exists($imageFile)) {
+	if (!file_exists($imageFile) || isset($_REQUEST['force'])) {
 		$pngBuilder->phrase($phrase, $charactersPerLine);
 		$image = $pngBuilder->build();
 		// Save the image
